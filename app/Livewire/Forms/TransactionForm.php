@@ -40,6 +40,8 @@ class TransactionForm extends Form
     public function store()
     {
         $this->validate();
+        // lakukan validasi mengecek anggaran yang sesuai
+
 
         Transaction::create([
             'user_id' => Auth::id(),
@@ -49,6 +51,9 @@ class TransactionForm extends Form
             'description' => $this->description,
             'transaction_date' => $this->transaction_date,
         ]);
+
+        // kurangin anggaran yang sesuai dengan kategori dan tipe transaksi
+        
 
         $this->reset(['category_id', 'amount', 'description']);
     }

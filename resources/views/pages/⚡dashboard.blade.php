@@ -106,7 +106,7 @@ new class extends Component
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {{-- Card 1: Saldo Bersih --}}
-        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-600 bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
+        <div class="bg-blue-100 p-6 rounded-xl shadow-sm border-t-4 border-blue-600 bg-blue-100 dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center">   
                 <span class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Total Saldo Bersih</span>
                 <flux:icon icon="wallet" variant="outline" class="text-blue-600" />

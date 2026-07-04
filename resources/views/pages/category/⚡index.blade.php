@@ -104,5 +104,7 @@ new class extends Component {
                 @endforeach
             </flux:table.rows>
         </flux:table>
+
+        
     </div>
 </div>
