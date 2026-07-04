@@ -103,13 +103,13 @@ new class extends Component
     <flux:separator variant="subtle" />
 
     {{-- KELOMPOK KOMPONEN STATISTIK RINGKASAN --}}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {{-- Card 1: Saldo Bersih --}}
-        <div class="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-2">
+        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-600 bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
+          <div class="flex justify-between items-center">   
                 <span class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Total Saldo Bersih</span>
-                <flux:icon icon="wallet" variant="outline" class="text-zinc-400" />
+                <flux:icon icon="wallet" variant="outline" class="text-blue-600" />
             </div>
             <div>
                 <div class="text-2xl font-bold text-zinc-900 dark:text-white">
@@ -123,15 +123,17 @@ new class extends Component
         <div class="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
             <div class="flex items-center justify-between mb-2">
                 <span class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Anggaran Bulan Ini</span>
-                <flux:icon icon="credit-card" variant="outline" class="text-zinc-400" />
+                <flux:icon icon="credit-card" variant="outline" class="text-blue-600" />
+                <svg class="w-5 h-5" ...></svg>
+            </span>
             </div>
             <div>
-                <div class="text-2xl font-bold text-zinc-900 dark:text-white">
+                <div class="text-2xl font-bold text-slate-900 dark:text-white">
                     Rp {{ number_format($this->stats['month_expense'], 0, ',', '.') }}
                 </div>
                 <div class="flex items-center justify-between text-xs text-zinc-400 mt-1">
                     <span>Limit: Rp {{ number_format($this->stats['budget_limit'], 0, ',', '.') }}</span>
-                    <span class="font-semibold text-zinc-700 dark:text-zinc-300">{{ $this->stats['budget_percentage'] }}%</span>
+                    <span class="font-semibold text-zinc-700 dark:text-slate-300">{{ $this->stats['budget_percentage'] }}%</span>
                 </div>
                 {{-- Progress Bar Anggaran --}}
                 <div class="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full mt-2 overflow-hidden">
@@ -198,7 +200,7 @@ new class extends Component
                             label: 'Pemasukan',
                             data: data.income,
                             borderColor: '#10b981', // emerald-500
-                            backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                            backgroundColor: 'rgba(0, 63, 251, 0.99)',
                             tension: 0.3,
                             fill: true
                         },
