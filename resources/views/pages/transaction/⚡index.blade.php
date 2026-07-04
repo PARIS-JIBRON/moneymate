@@ -48,7 +48,7 @@ new class extends Component
 };
 ?>
 
-<div class="max-w-7xl mx-auto space-y-4 p-6">
+<div class="max-w-7xl mx-auto space-y-4 p-6 bg-blue-800">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
             <flux:heading size="xl" class="text-zinc-800 dark:text-white">Transaksi Keuangan</flux:heading>
