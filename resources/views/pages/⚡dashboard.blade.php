@@ -120,8 +120,8 @@ new class extends Component
         </div>
 
         {{-- Card 2: Pemakaian Anggaran Bulanan --}}
-        <div class="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-2">
+        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-600 bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
+            <div class="flex justify-between items-center mb-2">
                 <span class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Anggaran Bulan Ini</span>
                 <flux:icon icon="credit-card" variant="outline" class="text-blue-600" />
                 <svg class="w-5 h-5" ...></svg>
