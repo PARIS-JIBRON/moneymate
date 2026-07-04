@@ -200,7 +200,7 @@ new class extends Component
                             label: 'Pemasukan',
                             data: data.income,
                             borderColor: '#10b981', // emerald-500
-                            backgroundColor: 'rgba(0, 63, 251, 0.99)',
+                            backgroundColor: 'rgba(163, 181, 234, 0.99)',
                             tension: 0.3,
                             fill: true
                         },
