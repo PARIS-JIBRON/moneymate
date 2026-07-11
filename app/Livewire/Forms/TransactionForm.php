@@ -2,7 +2,10 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Budget;
 use App\Models\Transaction;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Form;
 
@@ -37,23 +40,52 @@ class TransactionForm extends Form
         $this->transaction_date = $transaction->transaction_date->format('Y-m-d\TH:i');
     }
 
+    protected function getMatchingBudget(): ?Budget
+    {
+        if ($this->type !== 'expense') {
+            return null;
+        }
+
+        $date = Carbon::parse($this->transaction_date);
+
+        return Budget::query()
+            ->where('user_id', Auth::id())
+            ->where('category_id', $this->category_id)
+            ->where('month', $date->month)
+            ->where('year', $date->year)
+            ->first();
+    }
+
+    protected function notifyBudgetStatus(Budget $budget): void
+    {
+        if ($budget->isOverBudget()) {
+            $monthName = DateTime::createFromFormat('!m', $budget->month)->format('F');
+            \Flux::toast(
+                variant: 'warning',
+                text: "Pengeluaran untuk {$budget->category->name} {$monthName} {$budget->year} telah melebihi batas anggaran."
+            );
+        }
+    }
+
     public function store()
     {
         $this->validate();
-        // lakukan validasi mengecek anggaran yang sesuai
 
+        $budget = $this->getMatchingBudget();
 
         Transaction::create([
             'user_id' => Auth::id(),
             'category_id' => $this->category_id,
+            'budget_id' => $budget?->id,
             'amount' => $this->amount,
             'type' => $this->type,
             'description' => $this->description,
             'transaction_date' => $this->transaction_date,
         ]);
 
-        // kurangin anggaran yang sesuai dengan kategori dan tipe transaksi
-        
+        if ($budget) {
+            $this->notifyBudgetStatus($budget);
+        }
 
         $this->reset(['category_id', 'amount', 'description']);
     }
@@ -62,12 +94,19 @@ class TransactionForm extends Form
     {
         $this->validate();
 
+        $budget = $this->getMatchingBudget();
+
         $this->transaction->update([
             'category_id' => $this->category_id,
+            'budget_id' => $budget?->id,
             'amount' => $this->amount,
             'type' => $this->type,
             'description' => $this->description,
             'transaction_date' => $this->transaction_date,
         ]);
+
+        if ($budget) {
+            $this->notifyBudgetStatus($budget);
+        }
     }
 }

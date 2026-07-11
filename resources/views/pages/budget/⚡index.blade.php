@@ -99,11 +99,19 @@ new class extends Component
                     <flux:table.column sortable :sorted="$sortBy === 'year'" :direction="$sortDirection" wire:click="sort('year')">Periode</flux:table.column>
                     <flux:table.column>Kategori</flux:table.column>
                     <flux:table.column sortable :sorted="$sortBy === 'limit_amount'" :direction="$sortDirection" wire:click="sort('limit_amount')">Batas Anggaran</flux:table.column>
+                    <flux:table.column>Terpakai</flux:table.column>
+                    <flux:table.column>Sisa</flux:table.column>
+                    <flux:table.column>Status</flux:table.column>
                     <flux:table.column></flux:table.column>
                 </flux:table.columns>
 
                 <flux:table.rows>
                     @foreach ($this->budgets as $budget)
+                        @php
+                            $used = $budget->usedAmount();
+                            $remaining = $budget->remainingAmount();
+                            $statusClass = $remaining < 0 ? 'text-red-600' : 'text-emerald-600';
+                        @endphp
                         <flux:table.row :key="$budget->id">
                             <flux:table.cell class="whitespace-nowrap font-medium text-zinc-900 dark:text-white">
                                 {{ DateTime::createFromFormat('!m', $budget->month)->format('F') }} {{ $budget->year }}
@@ -115,6 +123,20 @@ new class extends Component
 
                             <flux:table.cell class="font-bold text-zinc-900 dark:text-white">
                                 Rp {{ number_format($budget->limit_amount, 2, ',', '.') }}
+                            </flux:table.cell>
+
+                            <flux:table.cell class="text-zinc-900 dark:text-white">
+                                Rp {{ number_format($used, 2, ',', '.') }}
+                            </flux:table.cell>
+
+                            <flux:table.cell class="{{ $statusClass }} font-semibold">
+                                Rp {{ number_format($remaining, 2, ',', '.') }}
+                            </flux:table.cell>
+
+                            <flux:table.cell>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $remaining < 0 ? 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400' : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400' }}">
+                                    {{ $remaining < 0 ? 'Over Budget' : 'Aman' }}
+                                </span>
                             </flux:table.cell>
 
                             <flux:table.cell>
