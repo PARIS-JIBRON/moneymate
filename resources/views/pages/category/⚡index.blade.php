@@ -80,7 +80,7 @@ new class extends Component {
 
             <flux:table.rows>
                 @foreach ($this->categories as $category)
-                    <flux:table.row :key="$category->id">
+                    <flux:table.row :key="$category->id" class="px-10">
                         <flux:table.cell class="text-zinc-500">{{ $category->id }}</flux:table.cell>
                         <flux:table.cell class="font-medium text-zinc-900 dark:text-white">{{ $category->name }}</flux:table.cell>
                         <flux:table.cell>
