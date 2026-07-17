@@ -62,9 +62,9 @@ new class extends Component
 };
 ?>
 
-<div class="max-w-7xl mx-auto space-y-4">
+<div class="max-w-7xl mx-auto space-y-4 bg-green-100 dark:bg-zinc-800 p-6">
     <flux:heading size="xl" class="text-zinc-800 dark:text-white">Tabungan</flux:heading>
-    <flux:subheading size="lg" class="text-zinc-600 dark:text-zinc-400">Pantau dan kelola impian keuangan Anda</flux:subheading>
+    <flux:subheading size="lg" class="text-zinc-600 dark:text-zinc-400">Pantau dan Kelola Impian Keuangan Anda</flux:subheading>
     <flux:separator variant="subtle" />
 
     <div class="flex items-center justify-between">

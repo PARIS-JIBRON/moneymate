@@ -65,7 +65,7 @@ new class extends Component
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto space-y-4 p-4 sm:p-6 lg:p-8">
+    <main class="max-w-7xl mx-auto space-y-4 p-4 sm:p-6 lg:p-8 bg-green-100 dark:bg-zinc-800">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
                 <flux:heading size="xl" class="text-zinc-800 dark:text-white">Anggaran Bulanan (Budgets)</flux:heading>

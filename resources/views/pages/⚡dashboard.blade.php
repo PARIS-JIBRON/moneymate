@@ -96,8 +96,8 @@ new class extends Component
 <div class="max-w-7xl mx-auto space-y-6" wire:poll.5s="updateDashboardData">
     
     <div>
-        <flux:heading size="xl" class="text-zinc-800 dark:text-white">Dashboard Keuangan</flux:heading>
-        <flux:subheading size="lg" class="text-zinc-500 dark:text-zinc-400">Ringkasan saldo, kepatuhan anggaran, dan target tabungan Anda secara realtime.</flux:subheading>
+        <flux:heading size="xl font-bold" class="text-zinc-800 dark:text-white">Dashboard Keuangan</flux:heading>
+        <flux:subheading size="lg" class="text-zinc-500 dark:text-zinc-400">Ringkasan Saldo, Kepatuhan Anggaran, dan Target Tabungan Anda Secara Realtime.</flux:subheading>
     </div>
 
     <flux:separator variant="subtle" />
@@ -115,7 +115,7 @@ new class extends Component
                 <div class="text-2xl font-bold text-zinc-900 dark:text-white">
                     Rp {{ number_format($this->stats['net_balance'], 0, ',', '.') }}
                 </div>
-                <p class="text-xs text-zinc-400 mt-1">Akumulasi seluruh Pemasukan - Pengeluaran</p>
+                <p class="text-xs text-zinc-400 mt-1">Akumulasi Seluruh Pemasukan - Pengeluaran</p>
             </div>
         </div>
 
@@ -153,7 +153,7 @@ new class extends Component
                 <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                     Rp {{ number_format($this->stats['total_savings'], 0, ',', '.') }}
                 </div>
-                <p class="text-xs text-zinc-400 mt-1">Total alokasi dana aman di dalam Saving Goals</p>
+                <p class="text-xs text-zinc-400 mt-1">Total Alokasi Dana Aman didalam Saving Goals</p>
             </div>
         </div>
 
@@ -163,7 +163,7 @@ new class extends Component
     <div class="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
         <div class="mb-4">
             <flux:heading size="lg">Tren Arus Kas (7 Hari Terakhir)</flux:heading>
-            <flux:subheading size="sm">Perbandingan grafik pemasukan vs pengeluaran harian Anda.</flux:subheading>
+            <flux:subheading size="sm">Perbandingan Grafik Pemasukan vs Pengeluaran Harian Anda.</flux:subheading>
         </div>
         
         {{-- Canvas Tempat Chart.js Digambar --}}

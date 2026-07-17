@@ -39,7 +39,7 @@ new class extends Component {
     }
 };?>
 
-<div class="max-w-7xl mx-auto space-y-6 p-6">
+<div class="max-w-7xl mx-auto space-y-6 px-16 bg-green-100 dark:bg-zinc-800">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
             <flux:heading size="xl" class="text-zinc-800 dark:text-white">Kategori Keuangan</flux:heading>
@@ -71,7 +71,7 @@ new class extends Component {
 
     <div class="overflow-x-auto bg-white dark:bg-zinc-900 rounded-lg shadow-sm border border-zinc-200 dark:border-zinc-800">
         <flux:table :paginate="$this->categories">
-            <flux:table.columns>
+            <flux:table.columns class="pl-6">
                 <flux:table.column sortable :sorted="$sortBy === 'id'" :direction="$sortDirection" wire:click="sort('id')">ID</flux:table.column>
                 <flux:table.column sortable :sorted="$sortBy === 'name'" :direction="$sortDirection" wire:click="sort('name')">Nama Kategori</flux:table.column>
                 <flux:table.column sortable :sorted="$sortBy === 'type'" :direction="$sortDirection" wire:click="sort('type')">Tipe</flux:table.column>
